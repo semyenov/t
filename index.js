@@ -1,11 +1,24 @@
-import TaskManager from './lic/taskManager.js';
-import NetworkManager from './lic/networkManager.js';
-import Mediator from './lic/mediator.js';
+// import Network from './lib/network.js';
+import BlessedRendered from "./lib/blessed.js";
+import Store from "./lib/store.js";
 
-const mediator = new Mediator();
-const taskManager = new TaskManager(mediator);
-const networkManager = new NetworkManager(mediator);
+const store = new Store();
+const renderer = new BlessedRendered(store);
 
-// Подписываемся на события от NetworkManager через Mediator
-mediator.on('tasksUpdated', taskManager.updateTasks.bind(taskManager));
+renderer.bindKeys();
+renderer.renderTasks();
 
+store.on("tasksUpdated", (tasks) => {
+    renderer.renderTasks(tasks);
+});
+
+
+// const mediator = new Mediator();
+// const taskManager = new TaskManager(mediator);
+// const network = new Network(mediator);
+
+// // Подписываемся на события от Network через Mediator
+// mediator.on('tasksUpdated', taskManager.updateTasks.bind(taskManager));
+
+// // Подписываемся на события от TaskManager через Mediator и Network
+// network.on('addTask', taskManager.addTask.bind(taskManager));
