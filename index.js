@@ -1,18 +1,15 @@
-// import Network from './lib/network.js';
-import BlessedRendered from "./lib/blessed.js";
+import Tasks from "./lib/app.js";
 import Store from "./lib/store.js";
 
 const store = new Store();
-const renderer = new BlessedRendered(store);
+const renderer = new Tasks(store);
 
-renderer.bindKeys();
-renderer.renderTasks();
+// store.on("tasksUpdated", (tasks) => {
+//     renderer.updateTasks(tasks);
+// });
 
-store.on("tasksUpdated", (tasks) => {
-    renderer.renderTasks(tasks);
-});
-
-
+// import Network from './lib/network.js';
+//
 // const mediator = new Mediator();
 // const taskManager = new TaskManager(mediator);
 // const network = new Network(mediator);
