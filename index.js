@@ -1,8 +1,8 @@
-import Tasks from "./lib/app.js";
+import App from "./lib/app.js";
 import Store from "./lib/store.js";
 
 const store = new Store();
-const renderer = new Tasks(store);
+const renderer = new App(store);
 
 // store.on("tasksUpdated", (tasks) => {
 //     renderer.updateTasks(tasks);
