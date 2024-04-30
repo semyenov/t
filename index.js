@@ -17,7 +17,7 @@ async function init() {
     terminal: "xterm-256color",
     log: "./debug.log",
     debug: true,
-    // dump: true,
+    dump: true,
   });
   const screen = blessed.screen({
     program: program,
