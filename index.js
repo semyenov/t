@@ -1,7 +1,6 @@
 import blessed from "blessed";
 
 import NetworkManager from "./lib/network.js";
-import Store from "./lib/store.js";
 import App from "./lib/app.js";
 
 async function init() {
@@ -32,11 +31,9 @@ async function init() {
   })
 
   const network = new NetworkManager(key);
-  const store = new Store();
   const app = new App(
     screen,
     network,
-    store,
   );
 
   return app;
